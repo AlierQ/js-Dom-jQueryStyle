@@ -167,10 +167,19 @@ jQuery.prototype = {
         // 将结果重新传入jquery中,继续获取api进行链式操作
         return jQuery(result);
     },
+    // 添加class样式
     // addClass() === 'addClass'() === addClass = function()
     addClass(className){
         for(let i = 0; i < this.elements.length; i++){
             this.elements[i].classList.add(className);
+        }
+        // this是api本身
+        return this;
+    },
+    // 移除class样式
+    removeClass(className){
+        for(let i = 0; i < this.elements.length; i++){
+            this.elements[i].classList.remove(className);
         }
         // this是api本身
         return this;
