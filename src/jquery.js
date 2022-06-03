@@ -79,6 +79,19 @@ jQuery.prototype = {
             node.remove();
         })
     },
+    // 清空当前元素内部元素
+    empty(){
+        this.each((node)=>{
+            let childNode = node.childNodes;
+            while(1){
+                if(childNode[0]===undefined){
+                    break;
+                }
+                childNode[0].remove();
+            }
+        })
+        return this;
+    },
     // 按照selector查询
     find(selector){
         let result = []; // 存放结果
