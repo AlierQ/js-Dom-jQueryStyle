@@ -92,6 +92,22 @@ jQuery.prototype = {
         })
         return this;
     },
+    // 修改标签内容
+    text(content){
+        let result = [];
+        if(content===undefined){ // 获取内容
+            this.each((node)=>{
+                // 防止没有innerText属性
+                result.push('innerText' in node ? node.innerText : node.textContent)
+            })
+            return result;
+        }else{
+            this.each((node)=>{
+                'innerText' in node ? node.innerText=content : node.textContent=content;
+            })
+            return this;
+        }
+    },
     // 按照selector查询
     find(selector){
         let result = []; // 存放结果
