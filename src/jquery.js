@@ -138,6 +138,24 @@ jQuery.prototype = {
             return result;
         }
     },
+    // 获取 修改 内联样式
+    css(object){
+        if(object===undefined){
+            let result = [];
+            this.each((node)=>{
+                result.push(node.getAttribute('style'))
+            })
+            return result;
+        }else{
+            this.each((node)=>{
+                let name = Object.keys(object);
+                name.forEach((item)=>{
+                    node.style[item] = object[item]
+                })
+            })
+            return this;
+        }
+    },
     // 按照selector查询
     find(selector){
         let result = []; // 存放结果
