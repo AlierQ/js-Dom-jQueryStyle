@@ -92,7 +92,7 @@ jQuery.prototype = {
         })
         return this;
     },
-    // 修改标签内容
+    // 获取 修改 标签文本内容
     text(content){
         let result = [];
         if(content===undefined){ // 获取内容
@@ -106,6 +106,36 @@ jQuery.prototype = {
                 'innerText' in node ? node.innerText=content : node.textContent=content;
             })
             return this;
+        }
+    },
+    // 获取 修改 标签html文本内容
+    html(content){
+        let result = [];
+        if(content === undefined){
+            this.each((node)=>{
+                result.push(node.innerHTML);
+            })
+            return result;
+        }else{
+            this.each((node)=>{
+                node.innerHTML=content;
+            })
+            return this;
+        }
+    },
+    // 获取 设置 属性值
+    attr(name,value){
+        let result = [];
+        if(arguments.length === 2){ // 设置
+            this.each((node)=>{
+                node.setAttribute(name,value);
+            })
+            return this;
+        }else if(arguments.length === 1){ //获取
+            this.each((node)=>{
+                result.push(node.getAttribute(name))
+            })
+            return result;
         }
     },
     // 按照selector查询
