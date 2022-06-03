@@ -55,6 +55,7 @@ jQuery.prototype = {
         }
         return this;
     },
+    // 插入孩子节点
     append(childNode){
         if(childNode instanceof HTMLCollection){  // 原生Dom
             // appendChild 会改变childNode,操作时顺序会变
@@ -72,6 +73,13 @@ jQuery.prototype = {
 
         return this;
     },
+    // 删除当前元素
+    remove(){
+        this.each((node)=>{
+            node.remove();
+        })
+    },
+    // 按照selector查询
     find(selector){
         let result = []; // 存放结果
         for(let i = 0; i < this.elements.length; i++){
